@@ -1,7 +1,11 @@
 sassy_coffee
 ============
 
-This is a django application to compile SASS, SCSS and CoffeeScript files from the static directory into CSS and JavaScript files
+This is a django application to compile SASS, SCSS and CoffeeScript files from the static directory into CSS and JavaScript files.
+
+This project is a very rough version of what is wanted. Feel free to suggest and colaborate with improvements to make it better. The only restriction is that the compilers being used cannot be external to the plugin. Must be entirely self contained. That is why it doesn't use popular plugins such as django-compass or django-compress and doesn't rely on executables such as Ruby's SASS and SCSS gem.
+
+Looking forward to include support for LESS and Stylus, among others.
 
 Quick start
 -----------
