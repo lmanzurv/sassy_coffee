@@ -18,9 +18,19 @@ setup(
     # Metadata for PyPI
     author='Laura Manzur',
     author_email='lc.manzur@novcat.com.co',
+    maintainer='Laura Manzur',
+    maintainer_email='lc.manzur@novcat.com.co',
     description='This is a django application to compile SASS, SCSS and CoffeeScript files from the static directory into CSS and JavaScript files',
     long_description=README,
-    license='Apache v2 License', 
-    url='https://github.com/lmanzurv/sassy_coffee.git',
+    license='Apache License', 
+    url='https://github.com/lmanzurv/sassy_coffee',
     keywords='sass coffeescript scss django',
+    download_url='https://github.com/lmanzurv/sassy_coffee',
+    bugtrack_url='https://github.com/lmanzurv/sassy_coffee/issues',
+    classifiers=[
+        'Framework :: Django',
+        'License :: OSI Approved :: Academic Free License (AFL)',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 2.7'
+    ]
 )
