@@ -8,17 +8,25 @@ Quick start
 
 1. Install using pip or easy_install
 
-<code>pip install django-sassy-coffee</code> or <code>easy_install django-sassy-coffee</code>
+<code>
+    $ pip install django-sassy-coffee
+</code>
+
+<code>
+    $ easy_install django-sassy-coffee
+</code>
 
 2. Add "sassy_coffee" to your INSTALLED_APPS setting like this:
+
 <code>
-    INSTALLED_APPS = (
+    INSTALLED_APPS = ( 
         ...
         'sassy_coffee',
     )
 </code>
 
 3. Add the following options to the settings.py file to configure:
+
 <code>
     DJANGO_SASSY_COFFEE_FORMATS = [
         # Add the formats you wish to compile
