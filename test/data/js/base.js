@@ -1,0 +1,1 @@
+$(document).ready(function(){$('.accordion').on('shown.bs.collapse',function(event){$(event.target).parent().find('.panel-heading i').removeClass('fa-chevron-down').addClass('fa-chevron-up');});$('.accordion').on('hidden.bs.collapse',function(event){$(event.target).parent().find('.panel-heading i').removeClass('fa-chevron-up').addClass('fa-chevron-down');});});
