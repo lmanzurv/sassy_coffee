@@ -20,14 +20,13 @@ Quick start
 
 3. Add the following options to the settings.py file to configure:
 <code>
-
-DJANGO_SASSY_COFFEE_FORMATS = [
-    # Add the formats you wish to compile
-    # Use 'sass' for SASS files, 'scss' for SCSS files, and 'coffee' for CoffeeScript files
-]
-
-DJANGO_SASSY_COFFEE_EXCLUSIONS = [
-    # Include the names of the files you want to be skipped by the compiler
-    # The name must include format (for example, 'base.sass' or 'index.coffee')
-]
+    DJANGO_SASSY_COFFEE_FORMATS = [
+        # Add the formats you wish to compile
+        # Use 'sass' for SASS files, 'scss' for SCSS files, and 'coffee' for CoffeeScript files
+    ]
+    
+    DJANGO_SASSY_COFFEE_EXCLUSIONS = [
+        # Include the names of the files you want to be skipped by the compiler
+        # The name must include format (for example, 'base.sass' or 'index.coffee')
+    ]
 </code>
