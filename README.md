@@ -33,3 +33,7 @@ Add the following options to the settings.py file to configure:
         # Include the names of the files you want to be skipped by the compiler
         # The name must include format (for example, 'base.sass' or 'index.coffee')
     ]
+
+Usage
+-----------
+Just add your SASS and CoffeeScript files inside your static folder. Recommended to locate them inside sass and coffee subfolders, but not required.
