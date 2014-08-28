@@ -5,21 +5,20 @@ This is a django application to compile SASS, SCSS and CoffeeScript files from t
 
 Quick start
 -----------
-
-1. Install using pip or easy_install
+Install using pip or easy_install
 
     $ pip install django-sassy-coffee
 
     $ easy_install django-sassy-coffee
 
-2. Add "sassy_coffee" to your INSTALLED_APPS setting like this:
+Add "sassy_coffee" to your INSTALLED_APPS setting like this:
 
     INSTALLED_APPS = ( 
         ...
         'sassy_coffee',
     )
 
-3. Add the following options to the settings.py file to configure:
+Add the following options to the settings.py file to configure:
 
     DJANGO_SASSY_COFFEE_FORMATS = [
         # Add the formats you wish to compile
