@@ -18,7 +18,7 @@ if settings.DEBUG:
         global _mtimes, _win
         for format in formats_to_compile:
             format = '*.{0}'.format(format)
-            files = utils.locate_files_to_compile(format, exclusions)
+            files = utils.locate_files_to_compile(format)
             for path, filename, name in files:
                 stat = os.stat(filename)
                 mtime = stat.st_mtime
