@@ -1,6 +1,13 @@
 from django.conf import settings
 import os, fnmatch, codecs
 
+def locate_folders_to_monitor(format):
+    matches = list()
+    for root, dirnames, filenames in os.walk(settings.STATIC_ROOT):
+        for filename in fnmatch.filter(filenames, format):
+            matches.append(root)
+    return list(set(matches))
+
 def locate_files_to_compile(format, exclusions=list()):
     matches = list()
     for root, dirnames, filenames in os.walk(settings.STATIC_ROOT):

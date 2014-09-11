@@ -18,17 +18,17 @@ if settings.DEBUG:
         global _mtimes, _win
         for format in formats_to_compile:
             format = '*.{0}'.format(format)
-            files = utils.locate_files_to_compile(format)
-            for path, filename, name in files:
-                stat = os.stat(filename)
+            files = utils.locate_folders_to_monitor(format)
+            for folder in files:
+                stat = os.stat(folder)
                 mtime = stat.st_mtime
 
                 if _win:
                     mtime -= stat.st_ctime
-                if filename not in _mtimes:
-                    _mtimes[filename] = mtime
+                if folder not in _mtimes:
+                    _mtimes[folder] = mtime
                     continue
-                if mtime != _mtimes[filename]:
+                if mtime != _mtimes[folder]:
                     _mtimes = {}
                     return True
         return c()
