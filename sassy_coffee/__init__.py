@@ -10,7 +10,7 @@ if settings.DEBUG:
 
     _mtimes = {}
     _win = (sys.platform == 'win32')
-    
+
     m = autoreload.main
     c = autoreload.code_changed
 
@@ -19,6 +19,9 @@ if settings.DEBUG:
         for format in formats_to_compile:
             format = '*.{0}'.format(format)
             files = utils.locate_folders_to_monitor(format)
+
+            print 'Folders to monitor:',files
+
             for folder in files:
                 stat = os.stat(folder)
                 mtime = stat.st_mtime
@@ -32,7 +35,7 @@ if settings.DEBUG:
                     _mtimes = {}
                     return True
         return c()
-    
+
     def main(main_func, args=None, kwargs=None):
         if os.environ.get('RUN_MAIN') == 'true':
             def recompile_files(func):
