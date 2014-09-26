@@ -20,8 +20,6 @@ if settings.DEBUG:
             format = '*.{0}'.format(format)
             files = utils.locate_folders_to_monitor(format)
 
-            print 'Folders to monitor:',files
-
             for folder in files:
                 stat = os.stat(folder)
                 mtime = stat.st_mtime

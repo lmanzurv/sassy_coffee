@@ -6,6 +6,7 @@ def locate_folders_to_monitor(format):
     for root, dirnames, filenames in os.walk(settings.STATIC_ROOT):
         for filename in fnmatch.filter(filenames, format):
             matches.append(root)
+            matches.append(os.path.join(root, filename))
     return list(set(matches))
 
 def locate_files_to_compile(format, exclusions=list()):
