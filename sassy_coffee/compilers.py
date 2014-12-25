@@ -1,6 +1,5 @@
 from scss import Scss
 from csscompressor import compress
-from django.conf import settings
 from sassy_coffee import utils
 from slimit import minify
 import sassin, os, coffeescript, sassy_coffee
@@ -22,7 +21,7 @@ def compile_sass_files(exclusions=list()):
     matches = utils.locate_files_to_compile('*.sass', exclusions)
 
     for path, f, name in matches:
-        scss = sassin.compile_from_file(os.path.join(settings.PROJECT_PATH, f))
+        scss = sassin.compile_from_file(os.path.join(sassy_coffee.DJANGO_PATH, f))
         compressed_css = compile_and_compress_scss(scss, path, name)
         utils.write_to_file('css', name, path, compressed_css)
 
@@ -30,7 +29,7 @@ def compile_scss_file(exclusions=list()):
     matches = utils.locate_files_to_compile('*.scss', exclusions)
 
     for path, f, name in matches:
-        with open(os.path.join(settings.PROJECT_PATH, f),'r') as scss_file:
+        with open(os.path.join(sassy_coffee.DJANGO_PATH, f), 'r') as scss_file:
             compressed_css = compile_and_compress_scss(scss_file.read(), path, name)
             utils.write_to_file('css', name, path, compressed_css)
 
@@ -41,8 +40,8 @@ def compile_and_compress_scss(scss, path, name):
 
 def compile_coffeescript(exclusions=list()):
     matches = utils.locate_files_to_compile('*.coffee', exclusions)
-    
+
     for path, f, name in matches:
-        js = coffeescript.compile_file(os.path.join(settings.PROJECT_PATH, f), bare=True)
+        js = coffeescript.compile_file(os.path.join(sassy_coffee.DJANGO_PATH, f), bare=True)
         compressed_js = minify(js)
         utils.write_to_file('js', name, path, compressed_js)

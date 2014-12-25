@@ -1,9 +1,14 @@
 from django.conf import settings
-import os, fnmatch, codecs
+import os, fnmatch, codecs, sassy_coffee
+
+STATIC_ROOT = os.path.join(sassy_coffee.DJANGO_PATH, 'static')
+
+if(hasattr('settings', 'STATIC_ROOT')):
+    STATIC_ROOT = settings.STATIC_ROOT
 
 def locate_folders_to_monitor(format):
     matches = list()
-    for root, dirnames, filenames in os.walk(settings.STATIC_ROOT):
+    for root, dirnames, filenames in os.walk(STATIC_ROOT):
         for filename in fnmatch.filter(filenames, format):
             matches.append(root)
             matches.append(os.path.join(root, filename))
@@ -11,10 +16,10 @@ def locate_folders_to_monitor(format):
 
 def locate_files_to_compile(format, exclusions=list()):
     matches = list()
-    for root, dirnames, filenames in os.walk(settings.STATIC_ROOT):
+    for root, dirnames, filenames in os.walk(STATIC_ROOT):
         for filename in fnmatch.filter(filenames, format):
             base = os.path.splitext(filename)[0]
-            if not filename in exclusions and not base in exclusions:
+            if filename not in exclusions and base not in exclusions:
                 matches.append((root, os.path.join(root, filename), base))
     return matches
 

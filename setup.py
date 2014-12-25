@@ -9,11 +9,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-sassy-coffee',
-    version='0.1.3.2',
+    version='0.1.4',
     packages=find_packages(),
 
     # Dependencies
-    install_requires = ['Django>=1.6.5','CoffeeScript>=1.0.9','csscompressor>=0.9.3', 'pyScss==1.2.0.post3', 'sassin>=0.9.2','slimit>=0.8.1'],
+    install_requires=['Django>=1.6.5', 'CoffeeScript>=1.0.9', 'csscompressor>=0.9.3', 'pyScss==1.2.0.post3', 'sassin>=0.9.2', 'slimit>=0.8.1'],
 
     # Metadata for PyPI
     author='Laura Manzur',
