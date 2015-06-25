@@ -1,7 +1,6 @@
 from scss import Scss
 from csscompressor import compress
 from sassy_coffee import utils
-from slimit import minify
 import sassin, os, coffeescript, sassy_coffee
 
 def compile_files():
@@ -43,5 +42,6 @@ def compile_coffeescript(exclusions=list()):
 
     for path, f, name in matches:
         js = coffeescript.compile_file(os.path.join(sassy_coffee.DJANGO_PATH, f), bare=True)
-        compressed_js = minify(js)
+        from jsmin import jsmin
+        compressed_js = jsmin(js)
         utils.write_to_file('js', name, path, compressed_js)

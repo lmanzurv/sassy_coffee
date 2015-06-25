@@ -19,7 +19,7 @@ class SassyCoffeeTest(TestCase):
         def code_changed():
 
             for format in formats_to_compile:
-                format = '*.{0}'.format(format)
+                format = '*.%s' % format
                 files = utils.locate_folders_to_monitor(format)
 
                 for folder in files:
@@ -39,7 +39,7 @@ class SassyCoffeeTest(TestCase):
         if code_changed():
             compilers.compile_files()
 
-        new_file = open('{0}/app/sass/new.sass'.format(settings.STATIC_ROOT),'w')
+        new_file = open('%s/app/sass/new.sass' % settings.STATIC_ROOT, 'w')
         new_file.write('@import base.sass')
         new_file.close()
 
@@ -47,5 +47,8 @@ class SassyCoffeeTest(TestCase):
             compilers.compile_files()
 
     def tearDown(self):
-        os.remove('{0}/app/sass/new.sass'.format(settings.STATIC_ROOT))
-        os.remove('{0}/app/css/new.css'.format(settings.STATIC_ROOT))
+        if os.path.exists('%s/app/sass/new.sass' % settings.STATIC_ROOT):
+            os.remove('%s/app/sass/new.sass' % settings.STATIC_ROOT)
+
+        if os.path.exists('%s/app/css/new.css' % settings.STATIC_ROOT):
+            os.remove('%s/app/css/new.css' % settings.STATIC_ROOT)

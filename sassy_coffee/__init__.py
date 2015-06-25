@@ -1,7 +1,7 @@
 from django.conf import settings
 
 DJANGO_PATH = settings.BASE_DIR
-if(hasattr('settings', 'PROJECT_PATH')):
+if(hasattr(settings, 'PROJECT_PATH')):
     DJANGO_PATH = settings.PROJECT_PATH
 
 from django.utils import autoreload
@@ -22,7 +22,7 @@ if settings.DEBUG:
     def code_changed():
         global _mtimes, _win
         for format in formats_to_compile:
-            format = '*.{0}'.format(format)
+            format = '*.%s' % format
             files = utils.locate_folders_to_monitor(format)
 
             for folder in files:

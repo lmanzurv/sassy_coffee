@@ -3,7 +3,7 @@ import os, fnmatch, codecs, sassy_coffee
 
 STATIC_ROOT = os.path.join(sassy_coffee.DJANGO_PATH, 'static')
 
-if(hasattr('settings', 'STATIC_ROOT')):
+if(hasattr(settings, 'STATIC_ROOT')):
     STATIC_ROOT = settings.STATIC_ROOT
 
 def locate_folders_to_monitor(format):
