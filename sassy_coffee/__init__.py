@@ -1,8 +1,10 @@
 from django.conf import settings
 
-DJANGO_PATH = settings.BASE_DIR
-if(hasattr(settings, 'PROJECT_PATH')):
+DJANGO_PATH = None
+if hasattr(settings, 'PROJECT_PATH') and settings.PROJECT_PATH:
     DJANGO_PATH = settings.PROJECT_PATH
+else:
+    DJANGO_PATH = settings.BASE_DIR
 
 from django.utils import autoreload
 from sassy_coffee import utils, compilers

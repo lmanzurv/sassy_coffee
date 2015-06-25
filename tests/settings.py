@@ -13,7 +13,7 @@ DATABASES = {
 
 SECRET_KEY = 'sassycoffee123'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'data')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'data')
 STATIC_URL = '/data/'
 
 INSTALLED_APPS = (

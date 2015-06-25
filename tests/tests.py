@@ -11,6 +11,17 @@ class SassyCoffeeTest(TestCase):
     _mtimes = {}
     _win = (sys.platform == 'win32')
 
+    root = None
+    if hasattr(settings, 'STATIC_ROOT') and settings.STATIC_ROOT:
+        root = settings.STATIC_ROOT
+    else:
+        path = None
+        if hasattr(settings, 'PROJECT_PATH') and settings.PROJECT_PATH:
+            path = settings.PROJECT_PATH
+        else:
+            path = settings.BASE_DIR
+        root = os.path.join(path, 'static')
+
     def test_autoreload(self):
         formats_to_compile = [format.lower() for format in getattr(settings, 'DJANGO_SASSY_COFFEE_FORMATS', list())]
 
@@ -39,7 +50,7 @@ class SassyCoffeeTest(TestCase):
         if code_changed():
             compilers.compile_files()
 
-        new_file = open('%s/app/sass/new.sass' % settings.STATIC_ROOT, 'w')
+        new_file = open('%s/app/sass/new.sass' % self.root, 'w')
         new_file.write('@import base.sass')
         new_file.close()
 
@@ -47,8 +58,8 @@ class SassyCoffeeTest(TestCase):
             compilers.compile_files()
 
     def tearDown(self):
-        if os.path.exists('%s/app/sass/new.sass' % settings.STATIC_ROOT):
-            os.remove('%s/app/sass/new.sass' % settings.STATIC_ROOT)
+        if os.path.exists('%s/app/sass/new.sass' % self.root):
+            os.remove('%s/app/sass/new.sass' % self.root)
 
-        if os.path.exists('%s/app/css/new.css' % settings.STATIC_ROOT):
-            os.remove('%s/app/css/new.css' % settings.STATIC_ROOT)
+        if os.path.exists('%s/app/css/new.css' % self.root):
+            os.remove('%s/app/css/new.css' % self.root)

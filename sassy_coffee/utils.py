@@ -1,10 +1,11 @@
 from django.conf import settings
 import os, fnmatch, codecs, sassy_coffee
 
-STATIC_ROOT = os.path.join(sassy_coffee.DJANGO_PATH, 'static')
-
-if(hasattr(settings, 'STATIC_ROOT')):
+STATIC_ROOT = None
+if hasattr(settings, 'STATIC_ROOT') and settings.STATIC_ROOT:
     STATIC_ROOT = settings.STATIC_ROOT
+else:
+    STATIC_ROOT = os.path.join(sassy_coffee.DJANGO_PATH, 'static')
 
 def locate_folders_to_monitor(format):
     matches = list()
